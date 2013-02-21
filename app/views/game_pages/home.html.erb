@@ -1,0 +1,15 @@
+<% if signed_in? %>
+ Welcome <%= current_user.name %>. This is the page to challenge a friend
+ <%= link_to "Sign out", signout_path %>
+<% else %>
+
+
+	<div class = "center hero-unit">
+		
+	<h1> This is the Sign in Page </h1>
+
+	<h2> This is where I will put some facebook login api</h2>
+
+	<%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-large btn-primary"%>
+	</div>
+	<%end%>
