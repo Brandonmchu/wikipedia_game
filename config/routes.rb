@@ -1,4 +1,9 @@
 WikipediaGame::Application.routes.draw do
+
+  root to: 'game_pages#challenge'
+
+  match '/challenge', to: 'game_pages#challenge'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WikipediaGame</title>
+  <title>Wikipedia Games</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+
+<!-- <if signed_in? %> <=render 'layouts/header' %> <= render 'layout/sidebar' %> <=yield%> <else%> <=yield%>-->
+
 <%= yield %>
+
 
 </body>
 </html>
