@@ -8,11 +8,14 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate','0.0.6'
 gem 'jquery-rails', '2.0.2'
 gem 'omniauth-facebook'
+gem 'faraday', "~>0.8.5"
+gem 'jruby-openssl', :platform => :jruby
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
+	gem 'annotate', '2.5.0'
 	gem 'sqlite3', '1.3.5'
 	gem 'rspec-rails', '2.11.0'
 end
