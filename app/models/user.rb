@@ -26,4 +26,18 @@ class User < ActiveRecord::Base
   		user.token = auth["credentials"]["token"]
   	end
   end
+
+  def facebook
+  	@facebook ||= Koala::Facebook::API.new(token)
+  	block_given? ? yield(@facebook) : @facebook
+  rescue Koala::Facebook::APIError => e
+  	logger.info e.to_s
+  	nil
+  end
+
+  def friends
+  	facebook {|fb| fb.get_connections("me","friends")}
+  end
+
+
 end

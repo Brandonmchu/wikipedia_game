@@ -1,15 +1,40 @@
 <% if signed_in? %>
  <h1>Welcome <%= current_user.name %>. This is the page to challenge a friend</h1>
  <%= link_to "Sign out", signout_path %>
+
+<div id="friends">
+	<p><%= link_to "Invite your Facebook Friends","#",:id=>"invite_fb_friends"%></p>
+	<div id="fb-root"></div>
+	<script src ="http://connect.facebook.net/en_US/all.js"></script>
+	<script>
+	$(function(){
+		$("a#invite_fb_friends").click(function(){
+			FB.init({
+				appId:'225406654251087',
+				cookie:false,
+				status:true
+			});
+
+			FB.ui({method:'apprequests',message:'would like to invite you to try out our app!'});
+		});
+	});
+	</script>
+</div>
+
+<p><%=current_user.friends[0]['name']%></p>
+<p><img src='http://graph.facebook.com/<%=current_user.friends[0]['id']%>/picture?type=normal'></p>
+
+
+
 <% else %>
 
 
 	<div class = "center hero-unit">
 		
-	<h1> This is the Sign in Page </h1>
+		<h1> This is the Sign in Page </h1>
 
-	<h2> This is where I will put some facebook login api</h2>
+		<h2> This is where I will put some facebook login api</h2>
 
-	<%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-large btn-primary"%>
+		<%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-large btn-primary"%>
 	</div>
-	<%end%>
+<%end%>

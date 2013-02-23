@@ -10,7 +10,8 @@ gem 'jquery-rails', '2.0.2'
 gem 'omniauth-facebook'
 gem 'faraday', "~>0.8.5"
 gem 'jruby-openssl', :platform => :jruby
-
+gem 'koala'
+gem 'font-awesome-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

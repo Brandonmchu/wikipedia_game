@@ -1,1 +1,187 @@
 @import "bootstrap";
+
+/* EVERYTHING BELOW THIS IS BRANDON'S WIKI WAR .CSS*/
+body{
+margin-top:41px;
+overflow: hidden;
+font-family:'lato', sans-serif;  
+}
+
+hr{
+  border: none;
+  background-color: #EEE;
+  color: #EEE;
+  height: 0.25px;      
+}
+
+.container-fluid{
+  padding:0 0 0 0;
+}
+
+.navbar-inner .nav li a{
+  color:#333;
+  margin-top:2.5px;
+}
+
+.navbar-inner p{
+  padding:10px 0 0 0;
+  font-size:20px;
+  color:#4682B4;
+}
+
+.navbar-inner .topic-one{
+  text-align:right;
+}
+
+.navbar-inner .topic-two{
+  text-align:left;
+}
+
+
+.navbar-inner{
+  font-weight:900;
+}
+
+.icon-globe{
+  font-size:30px;
+  float:left;
+  color:#4682B4;
+  padding:7px 0 0 15px;
+}
+
+.icon-circle-arrow-right{
+  font-size:36px;
+}
+
+.navbar-inner .span2 {
+  margin-top:2.5px;
+}
+
+.navbar-inner .brand{
+  margin:7px 0 0 5px;
+  padding-left:0;
+  padding-top:7px !important;
+  color:#333;
+  font-family:'Libertine';
+  font-size:25px;
+}
+
+.navbar-inner .nav{
+  float:right;
+  font-family:'Libertine';
+  font-size:20px;
+}
+
+.navbar-inner .nav li{
+  color:#000;
+}
+
+.navbar-inner .span3{
+  width:25%;
+}
+
+.navbar-inner .span6{
+  width:50%;
+}
+
+
+.row-fluid .span9{
+  width:76.5957446808511%;
+}
+
+.row-fluid .offset3{
+  margin-left:23.404255319148934% !important;
+}
+
+.row-fluid [class*="span"]{
+  margin-left:0;
+  *margin-left:0
+}
+
+.navbar-inner{
+  text-align:center;
+  font-size:10px;
+}
+
+.wikisidebar{
+  /* IE10 Consumer Preview */ 
+  background-image: -ms-radial-gradient(center, ellipse closest-corner, #4682B4 0%, #0079B3 100%);
+
+  /* Mozilla Firefox */ 
+  background-image: -moz-radial-gradient(center, ellipse closest-corner, #4682B4 0%, #0079B3 100%);
+
+  /* Opera */ 
+  background-image: -o-radial-gradient(center, ellipse closest-corner, #4682B4 0%, #0079B3 100%);
+
+  /* Webkit (Safari/Chrome 10) */ 
+  background-image: -webkit-gradient(radial, center center, 0, center center, 497, color-stop(0, #4682B4), color-stop(1, #0079B3));
+
+  /* Webkit (Chrome 11+) */ 
+  background-image: -webkit-radial-gradient(center, ellipse closest-corner, #4682B4 0%, #0079B3 100%);
+
+  /* W3C Markup, IE10 Release Preview */ 
+  background-image: radial-gradient(ellipse closest-corner at center, #4682B4 0%, #0079B3 100%);
+  height:100%;
+  text-align:center;
+  position:fixed;
+  border-right-color: rgb(212, 212, 212);
+  border-right-style: solid;
+  border-right-width: 1px;
+  -webkit-box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.5);
+     -moz-box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.5);
+  
+}
+
+.wikisidebar .sidebar-inner{
+  margin-top:10px;
+  padding:10px 10px 10px 10px;
+  color:#FFF;
+}
+
+.sidebar-metrics{
+  margin-top:20px;
+}
+
+.sidebar-metrics h1{
+  padding:5px 0 0 0;
+  text-align:right;
+  font-size:20px;
+}
+
+.sidebar-metrics h2{
+  padding:5px 0 0 0;
+  text-align:center;
+  font-size:35px;
+}
+
+.sidebar-links{
+  margin-top:20px;
+}
+
+.sidebar-links ul{
+  text-align:center;
+  list-style-type:none;
+}
+
+.sidebar-links li{
+  padding:0 0 5px 0;
+  color:#FFF;
+  font-size:15px;
+}
+
+.sidebar-links .links{
+  text-align:left;
+}
+
+
+.row-fluid .content-container{
+  border-style:solid;
+  border-width:0px;
+  width:100%;
+  height:100%;
+  margin-top:10px;
+}
+
+/*END OF BRANDON'S WIKI WAR.CSS*/
+

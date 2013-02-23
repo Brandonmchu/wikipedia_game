@@ -5,6 +5,8 @@ WikipediaGame::Application.routes.draw do
   match '/home', to: 'game_pages#home'
   match '/auth/facebook/callback', to: 'sessions#create'
   match '/signout', to: "sessions#destroy"
+  match '/test', to: "game_pages#Brandonpage"
+  match '/test2', to: "game_pages#test2"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

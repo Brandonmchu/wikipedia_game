@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+  <head>
+    <title>Wikiwars</title>
+    <!--FontAwesome-->
+
+  </head>
+  <body style="height: 100%;">
+
+    
+    <div class="container-fluid" style="height: 100%;">
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner row-fluid">
+          <div class="span3">
+            <i class="icon-globe"></i><a class="brand" href="#"> WikiWars</a>
+          </div>
+          <div class="span6">
+            <div class="span5 topic-one">
+              <p>#{topicone}</p>
+            </div>
+            <div class="span2">
+              <i class="icon-circle-arrow-right"></i>
+            </div>
+            <div class="span5 topic-two">
+              <p>#{topictwo}</p>
+            </div>
+          </div>
+          <div class="span3">
+          <ul class="nav">
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">%{username} <b class="caret"></b></a></li>
+          </ul>
+          </div>
+        </div>
+      </div>  
+      <div class="row-fluid" style="height: 100%;">
+        <!--Sidebar-->
+        <div class="span3 wikisidebar" style="height: 100%;">
+          <div class="sidebar-inner">
+            <!--header-->
+            <div class="row-fluid">
+              <div class="span12">
+                <h3>You're facing...</h3>
+              </div>
+              <div class="span12">
+                <h2>%{username}</h2>
+              </div>
+            </div>
+            <!--metrics-->
+            <div class="sidebar-metrics">
+              <div class="row-fluid">
+                <div class="span6">
+                  <h1>Links Clicked</h1>
+                </div>
+                <div class="span6">
+                  <h2>7</h2>
+                </div>
+              </div>
+              <hr>
+              <div class="row-fluid">
+                <div class="span6">
+                  <h1>Time Elapsed</h1>
+                </div>
+                <div class="span6">
+                  <h2>7:20</h2>
+                </div>
+              </div>
+              <hr>
+              <div class="row-fluid">
+                <div class="span6">
+                  <h1>Your Score</h1>
+                </div>
+                <div class="span6">
+                  <h2>2310</h2>
+                </div>
+              </div>
+              <hr>
+            </div>
+            <!--metrics-->
+            <div class="sidebar-links">
+              <div class="span12">
+                <h3>Your Link History</h3>
+              </div>
+              <div class="row-fluid">
+                <div class="span4">
+                  <ul>
+                    <li>Link 1</li>
+                    <li>Link 2</li>
+                    <li>Link 3</li>
+                    <li>Link 4</li>
+                    <li>Link 5</li>
+                  </ul>
+                </div>
+                <div class="span8">
+                  <ul class="links">
+                    <li>Cakes</li>
+                    <li>Betty Crocker</li>
+                    <li>Peek Freans</li>
+                    <li>Kraft Foods</li>
+                    <li>SP 500</li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Content-->
+        <div class="span9 offset3">
+          <div class="content-container">
+         <iframe height="100%" width="100%" id="wiki-iframe" frameBorder="0" src="http://www.wikipedia.org">your browser does not support IFRAMEs</iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
