@@ -3,6 +3,7 @@ WikipediaGame::Application.routes.draw do
   root to: 'game_pages#home'
 
   match '/home', to: 'game_pages#home'
+  match '/sendrequest' =>'game_pages#sendrequest', as: :sendrequest
   match '/auth/facebook/callback', to: 'sessions#create'
   match '/signout', to: "sessions#destroy"
   match '/test', to: "game_pages#Brandonpage"

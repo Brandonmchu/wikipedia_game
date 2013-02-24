@@ -12,7 +12,8 @@
 			FB.init({
 				appId:'225406654251087',
 				cookie:false,
-				status:true
+				status:true,
+				frictionlessRequests: true
 			});
 
 			FB.ui({method:'apprequests',message:'would like to invite you to try out our app!'});
@@ -21,13 +22,41 @@
 	</script>
 </div>
 
-<p><%=current_user.friends[0]['name']%></p>
-<p><img src='http://graph.facebook.com/<%=current_user.friends[0]['id']%>/picture?type=normal'></p>
+	
+		<form name ="app request">
+			<input type="checkbox" name ="<%=current_user.friends[0]['id']%>" value="<%=current_user.friends[0]['id']%>">
+		<img src='http://graph.facebook.com/<%=current_user.friends[0]['id']%>/picture?type=small'>
+		<%=current_user.friends[0]['name']%>
 
+		<!-- testing with Brandon's facebook -->
+		<input type="checkbox" name ="28124383" value="28124383">
+		<img src='http://graph.facebook.com/28124383/picture?type=small'>
+		Brandon Chu
+		
+
+		<input type="submit" value="Send Requests">
+		</form>
+
+		<%= form_tag sendrequest_path do%>
+			<%=check_box_tag "friendids[]", 28124383 %>
+			<%=check_box_tag "friendids[]", 304567 %>
+			<%=submit_tag "send requests"%>
+		<% end %>
+
+
+
+		<!--this iterates through friends list and lists them with a checkbox, picture and their name
+		<=current_user.friends.each do |user| %>
+			<input type="checkbox" name="<=user['name']%>" value=<=user['id']%>
+			<=user['name'] %>
+			<img src='http://graph.facebook.com/<=user['id']%>/picture?type=small'>
+		<end%>-->
+
+		
 
 
 <% else %>
-
+<!-- This is what is displayed if the user is not signed in -->
 
 	<div class = "center hero-unit">
 		

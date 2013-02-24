@@ -24,7 +24,10 @@ class User < ActiveRecord::Base
   		user.uid = auth["uid"]
   		user.name = auth["info"]["name"]
   		user.token = auth["credentials"]["token"]
-  	end
+      user.games_played = 0
+      user.games_won = 0
+      user.games_lost = 0
+    end
   end
 
   def facebook
@@ -38,6 +41,5 @@ class User < ActiveRecord::Base
   def friends
   	facebook {|fb| fb.get_connections("me","friends")}
   end
-
-
+  
 end
