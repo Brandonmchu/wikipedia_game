@@ -1,56 +1,93 @@
 <% if signed_in? %>
- <h1>Welcome <%= current_user.name %>. This is the page to challenge a friend</h1>
- <%= link_to "Sign out", signout_path %>
-
-<div id="friends">
-	<p><%= link_to "Invite your Facebook Friends","#",:id=>"invite_fb_friends"%></p>
+ <h1>Welcome <%= current_user.name %>. </h1>
+ 	<h2> Challenge one of your friends! </h2>
+ 	<!-- the below 2 lines are required for facebook connections -->
 	<div id="fb-root"></div>
 	<script src ="http://connect.facebook.net/en_US/all.js"></script>
-	<script>
-	$(function(){
-		$("a#invite_fb_friends").click(function(){
-			FB.init({
-				appId:'225406654251087',
-				cookie:false,
-				status:true,
-				frictionlessRequests: true
-			});
-
-			FB.ui({method:'apprequests',message:'would like to invite you to try out our app!'});
-		});
-	});
-	</script>
-</div>
+	
 
 	
-		<form name ="app request">
-			<input type="checkbox" name ="<%=current_user.friends[0]['id']%>" value="<%=current_user.friends[0]['id']%>">
-		<img src='http://graph.facebook.com/<%=current_user.friends[0]['id']%>/picture?type=small'>
-		<%=current_user.friends[0]['name']%>
 
-		<!-- testing with Brandon's facebook -->
-		<input type="checkbox" name ="28124383" value="28124383">
-		<img src='http://graph.facebook.com/28124383/picture?type=small'>
-		Brandon Chu
-		
+<%-# This block paginates facebook friends by letter -%>
 
-		<input type="submit" value="Send Requests">
-		</form>
+	<% letter = 'a'%>
+	
+	<%= form_tag sendrequest_path, id: 'send-request-form' do%>
+			<%current_user.friends.each do |user| %>
+				<%if user['name'].downcase.start_with? letter %>
+					<%=check_box_tag "friendids[]", user['id'] %>
+					<%=user['name'] %>
+					<img src='http://graph.facebook.com/<%=user['id']%>/picture?type=small'>
+				<%end%>
+			<%end%>
+		<%=submit_tag "send requests"%>
+	<% end %>
 
-		<%= form_tag sendrequest_path do%>
-			<%=check_box_tag "friendids[]", 28124383 %>
-			<%=check_box_tag "friendids[]", 304567 %>
+
+
+
+<%if false %><%-# This block paginates facebook friends by every 30 friends-%>
+
+	<%= form_tag sendrequest_path, id: 'send-request-form' do%>
+	
+		<% max_page = (current_user.friends.size/30.00).ceil %>
+		<% current_page = 15 %>
+
+		<% if current_page < max_page then %>
+				<% ((current_page*30-30)..current_page*30-1).each do |n|%>
+					<%=check_box_tag "friendids[]", current_user.friends[n]['id']%>
+					<%=current_user.friends[n]['name']%>
+					<img src='http://graph.facebook.com/<%=current_user.friends[n]['id'] %>/picture?type=small'>
+					<%=n%>
+				<%end%>
+			<%else%>
+				<% ((current_page*30-30)..current_user.friends.size-1).each do |n|%>
+					<%=check_box_tag "friendids[]", current_user.friends[n]['id'] %>
+					<%=current_user.friends[n]['name']%>
+					<img src='http://graph.facebook.com/<%=current_user.friends[n]['id'] %>/picture?type=small'>
+					<%=n%>
+				<%end%>
+		<% end %>
+		<%=submit_tag "send requests"%>		
+	<%end%>
+
+<%end%>
+
+
+
+
+
+	<% if false %><%-# This block does not paginate and lists all friends-%>
+
+		<%= form_tag sendrequest_path, id: 'send-request-form' do%>
+			<%current_user.friends.each do |user| %>
+				<%=check_box_tag "friendids[]", user['id'] %>
+				<%=user['name'] %>
+				<img src='http://graph.facebook.com/<%=user['id']%>/picture?type=small'>
+			<%end%>
 			<%=submit_tag "send requests"%>
 		<% end %>
+	<%end%>
 
+<%-# This block is the script that is supposed to send out app invitations-%>
+		<script>
+			$('#send-request-form').submit(function() {
+		    var friendIds = $(this).find(':checkbox:checked').map(function(){ return this.value }).get();
+		    sendRequestToRecipients(friendIds.join(','));
+		  });
 
+			function sendRequestToRecipients(ids) {
+				FB.init({
+		                    appId:'225406654251087',
+		                    cookie:false,
+		                    status:true,
+		                    frictionlessRequests: true
+		            });
+		        FB.ui({method:'apprequests', message:'would like to invite you to try out our app!', to: ids});
+		    };
+		</script>
 
-		<!--this iterates through friends list and lists them with a checkbox, picture and their name
-		<=current_user.friends.each do |user| %>
-			<input type="checkbox" name="<=user['name']%>" value=<=user['id']%>
-			<=user['name'] %>
-			<img src='http://graph.facebook.com/<=user['id']%>/picture?type=small'>
-		<end%>-->
+	
 
 		
 

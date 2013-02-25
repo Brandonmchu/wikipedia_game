@@ -10,3 +10,4 @@ $(document).ready ->
   
   # alert('link clicked');
   $("iframe#wiki-iframe").load linkClicked
+

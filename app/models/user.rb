@@ -15,7 +15,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :provider, :uid
+  attr_accessible :name, :provider, :uid,
 
 
   def self.create_with_omniauth(auth)
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def friends
-  	facebook {|fb| fb.get_connections("me","friends")}
+  	facebook {|fb| fb.get_connections("me","friends")}.sort{|a,b| a['name']<=>b['name']}
   end
-  
+
 end
