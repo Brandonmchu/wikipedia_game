@@ -8,68 +8,20 @@
 
 	
 
-<%-# This block paginates facebook friends by letter -%>
 
-	<% letter = 'a'%>
-	
-	<%= form_tag sendrequest_path, id: 'send-request-form' do%>
-			<%current_user.friends.each do |user| %>
-				<%if user['name'].downcase.start_with? letter %>
-					<%=check_box_tag "friendids[]", user['id'] %>
-					<%=user['name'] %>
-					<img src='http://graph.facebook.com/<%=user['id']%>/picture?type=small'>
-				<%end%>
-			<%end%>
-		<%=submit_tag "send requests"%>
-	<% end %>
+  <%= form_tag sendrequest_path, id: 'send-request-form' do %>
+  <%= render @friends %>
+  <%=submit_tag "send requests"%>		
+  <%= will_paginate @friends%>
+  <%end%>
 
 
+<% ('A'..'Z').each do |char| %>
+     <%= link_to char, '#' %>
+<% end %>
 
 
-<%if false %><%-# This block paginates facebook friends by every 30 friends-%>
-
-	<%= form_tag sendrequest_path, id: 'send-request-form' do%>
-	
-		<% max_page = (current_user.friends.size/30.00).ceil %>
-		<% current_page = 15 %>
-
-		<% if current_page < max_page then %>
-				<% ((current_page*30-30)..current_page*30-1).each do |n|%>
-					<%=check_box_tag "friendids[]", current_user.friends[n]['id']%>
-					<%=current_user.friends[n]['name']%>
-					<img src='http://graph.facebook.com/<%=current_user.friends[n]['id'] %>/picture?type=small'>
-					<%=n%>
-				<%end%>
-			<%else%>
-				<% ((current_page*30-30)..current_user.friends.size-1).each do |n|%>
-					<%=check_box_tag "friendids[]", current_user.friends[n]['id'] %>
-					<%=current_user.friends[n]['name']%>
-					<img src='http://graph.facebook.com/<%=current_user.friends[n]['id'] %>/picture?type=small'>
-					<%=n%>
-				<%end%>
-		<% end %>
-		<%=submit_tag "send requests"%>		
-	<%end%>
-
-<%end%>
-
-
-
-
-
-	<% if false %><%-# This block does not paginate and lists all friends-%>
-
-		<%= form_tag sendrequest_path, id: 'send-request-form' do%>
-			<%current_user.friends.each do |user| %>
-				<%=check_box_tag "friendids[]", user['id'] %>
-				<%=user['name'] %>
-				<img src='http://graph.facebook.com/<%=user['id']%>/picture?type=small'>
-			<%end%>
-			<%=submit_tag "send requests"%>
-		<% end %>
-	<%end%>
-
-<%-# This block is the script that is supposed to send out app invitations-%>
+<%# This block is the script that is supposed to send out app invitations%>
 		<script>
 			$('#send-request-form').submit(function() {
 		    var friendIds = $(this).find(':checkbox:checked').map(function(){ return this.value }).get();
